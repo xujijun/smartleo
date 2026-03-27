@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#7c9cff" />
+    <meta
+      name="description"
+      content="SmartLeo 是一个为儿童设计的移动端启蒙学习应用，支持英文字母和简单汉字学习。"
+    />
+    <link rel="icon" href="/smartleo/favicon.svg" type="image/svg+xml" />
+    <script>
+      (function (location) {
+        if (location.search[1] === '/') {
+          const decoded = location.search
+            .slice(1)
+            .split('&')
+            .map((item) => item.replace(/~and~/g, '&'))
+            .join('?');
+
+          window.history.replaceState(null, '', location.pathname.slice(0, -1) + decoded + location.hash);
+        }
+      })(window.location);
+    </script>
+    <title>SmartLeo 儿童学习</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

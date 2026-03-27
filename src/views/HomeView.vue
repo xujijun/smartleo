@@ -1,0 +1,139 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+const modules = computed(() => [
+  {
+    title: '英文字母学习',
+    description: '从 A 到 Z，认识大小写字母和简单单词。',
+    routeName: 'letters',
+    emoji: 'Aa',
+    accent: 'home-card--letters'
+  },
+  {
+    title: '简单汉字学习',
+    description: '学习常见基础汉字，认识字形和含义。',
+    routeName: 'hanzi',
+    emoji: '汉',
+    accent: 'home-card--hanzi'
+  }
+]);
+
+const installSteps = computed(() => [
+  '用手机浏览器打开应用首页',
+  '点击浏览器菜单中的“添加到主屏幕”',
+  '回到桌面后，点击 SmartLeo 图标快速进入'
+]);
+
+const highlights = computed(() => [
+  { label: '学习模块', value: '2+' },
+  { label: '字母内容', value: '26' },
+  { label: '汉字内容', value: '12' }
+]);
+
+const goToModule = (routeName: string) => {
+  router.push({ name: routeName });
+};
+</script>
+
+<template>
+  <main class="page page-home">
+    <section class="hero">
+      <div class="hero__badge">PWA 儿童启蒙学习</div>
+      <div class="hero__content">
+        <div class="hero__main">
+          <h1 class="hero__title">SmartLeo</h1>
+          <p class="hero__desc">
+            一个适合手机使用的儿童学习应用，帮助孩子从英文字母和简单汉字开始轻松启蒙。
+          </p>
+          <div class="hero__actions">
+            <van-button round type="primary" size="large" @click="goToModule('letters')">
+              进入学习
+            </van-button>
+            <van-button round plain type="primary" size="large" @click="goToModule('hanzi')">
+              看汉字
+            </van-button>
+          </div>
+        </div>
+
+        <section class="hero-card">
+          <div class="hero-card__icon">ABC</div>
+          <div class="hero-card__title">儿童友好学习体验</div>
+          <div class="hero-card__text">
+            大按钮、大字体、少步骤，适合亲子共学和移动端触控操作。
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div v-for="item in highlights" :key="item.label" class="stat-card">
+        <div class="stat-card__value">{{ item.value }}</div>
+        <div class="stat-card__label">{{ item.label }}</div>
+      </div>
+    </section>
+
+    <section class="panel install-panel">
+      <div>
+        <div class="panel__title">安装提示</div>
+        <div class="panel__text">
+          在支持的手机浏览器中打开后，可使用浏览器菜单将应用添加到主屏幕。
+        </div>
+      </div>
+      <van-tag round type="primary">可安装</van-tag>
+    </section>
+
+    <section class="panel install-guide">
+      <div class="panel__title">添加到主屏幕</div>
+      <div class="install-guide__steps">
+        <div v-for="(step, index) in installSteps" :key="step" class="install-step">
+          <div class="install-step__index">{{ index + 1 }}</div>
+          <div class="install-step__text">{{ step }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="module-list">
+      <div
+        v-for="item in modules"
+        :key="item.routeName"
+        class="home-card"
+        :class="item.accent"
+        role="button"
+        tabindex="0"
+        @click="goToModule(item.routeName)"
+        @keydown.enter="goToModule(item.routeName)"
+        @keydown.space.prevent="goToModule(item.routeName)"
+      >
+        <div class="home-card__icon">{{ item.emoji }}</div>
+        <div class="home-card__body">
+          <div class="home-card__title">{{ item.title }}</div>
+          <div class="home-card__desc">{{ item.description }}</div>
+        </div>
+        <van-button round type="primary" size="small" @click.stop="goToModule(item.routeName)">
+          开始学习
+        </van-button>
+      </div>
+    </section>
+
+    <section class="panel feature-panel">
+      <div class="panel__title">适合当前版本的使用方式</div>
+      <div class="feature-panel__items">
+        <div class="feature-item">
+          <div class="feature-item__title">亲子陪学</div>
+          <div class="feature-item__text">家长可陪孩子一起点选卡片、讲解字母和汉字。</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__title">碎片学习</div>
+          <div class="feature-item__text">每次学习一个字母或一个汉字，适合短时间反复记忆。</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-item__title">桌面快捷进入</div>
+          <div class="feature-item__text">安装到主屏幕后，更接近原生 App 的使用体验。</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
