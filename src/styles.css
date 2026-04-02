@@ -49,6 +49,13 @@ button {
   padding: 18px 4px 12px;
 }
 
+.hero__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
 .hero__content {
   display: grid;
   gap: 16px;
@@ -266,6 +273,10 @@ button {
   flex: 1;
 }
 
+.sound-toggle {
+  min-width: 88px;
+}
+
 .home-card__title {
   font-size: 18px;
   font-weight: 700;
@@ -304,6 +315,12 @@ button {
   max-width: 720px;
   margin: 0 auto;
   padding: 18px 16px 0;
+}
+
+.page-tools {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
 }
 
 .section-intro {
@@ -370,6 +387,15 @@ button {
   text-align: center;
 }
 
+.study-card--clickable {
+  cursor: pointer;
+}
+
+.study-card--clickable:focus-visible {
+  outline: 3px solid rgba(86, 110, 246, 0.28);
+  outline-offset: 2px;
+}
+
 .study-card--letters {
   border-color: rgba(86, 110, 246, 0.2);
 }
@@ -400,6 +426,10 @@ button {
   margin: 14px 0 0;
   color: #66728b;
   font-size: 14px;
+}
+
+.study-card__actions {
+  margin-top: 18px;
 }
 
 .actions {

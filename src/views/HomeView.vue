@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import SoundToggle from '@/components/SoundToggle.vue';
+import { playUiSound } from '@/composables/useAudio';
 
 const router = useRouter();
 
@@ -34,6 +36,7 @@ const highlights = computed(() => [
 ]);
 
 const goToModule = (routeName: string) => {
+  playUiSound('primary');
   router.push({ name: routeName });
 };
 </script>
@@ -41,7 +44,10 @@ const goToModule = (routeName: string) => {
 <template>
   <main class="page page-home">
     <section class="hero">
-      <div class="hero__badge">PWA 儿童启蒙学习</div>
+      <div class="hero__top">
+        <div class="hero__badge">PWA 儿童启蒙学习</div>
+        <SoundToggle />
+      </div>
       <div class="hero__content">
         <div class="hero__main">
           <h1 class="hero__title">SmartLeo</h1>

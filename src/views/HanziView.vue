@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import SoundToggle from '@/components/SoundToggle.vue';
 import StudyCard from '@/components/StudyCard.vue';
+import { playUiSound, speakHanzi } from '@/composables/useAudio';
 import { hanziList } from '@/data/hanzi';
 
 const router = useRouter();
@@ -10,27 +12,48 @@ const currentIndex = ref(0);
 const currentHanzi = computed(() => hanziList[currentIndex.value]);
 const progressPercent = computed(() => Math.round(((currentIndex.value + 1) / hanziList.length) * 100));
 
-const selectHanzi = (index: number) => {
+const playCurrentHanzi = () => {
+  speakHanzi(currentHanzi.value.character);
+};
+
+const updateHanzi = (index: number) => {
   currentIndex.value = index;
+  playUiSound('success');
+  speakHanzi(hanziList[index].character);
+};
+
+const selectHanzi = (index: number) => {
+  updateHanzi(index);
 };
 
 const goPrev = () => {
-  currentIndex.value = currentIndex.value === 0 ? hanziList.length - 1 : currentIndex.value - 1;
+  const nextIndex = currentIndex.value === 0 ? hanziList.length - 1 : currentIndex.value - 1;
+  updateHanzi(nextIndex);
 };
 
 const goNext = () => {
-  currentIndex.value = currentIndex.value === hanziList.length - 1 ? 0 : currentIndex.value + 1;
+  const nextIndex = currentIndex.value === hanziList.length - 1 ? 0 : currentIndex.value + 1;
+  updateHanzi(nextIndex);
+};
+
+const goHome = () => {
+  playUiSound('soft');
+  router.push('/');
 };
 </script>
 
 <template>
   <main class="page">
-    <van-nav-bar title="简单汉字学习" left-text="返回" left-arrow @click-left="router.push('/')" />
+    <van-nav-bar title="简单汉字学习" left-text="返回" left-arrow @click-left="goHome" />
 
     <section class="page-section">
+      <div class="page-tools">
+        <SoundToggle />
+      </div>
+
       <div class="section-intro">
         <h2>学习常见基础汉字</h2>
-        <p>点一点汉字按钮，就能切换到对应的学习卡片。</p>
+        <p>点一点汉字按钮，就能切换到对应的学习卡片，并播放汉字读音。</p>
       </div>
 
       <section class="learning-summary learning-summary--hanzi">
@@ -56,6 +79,11 @@ const goNext = () => {
         :meaning="currentHanzi.meaning"
         :tip="currentHanzi.tip"
         accent-class="study-card--hanzi"
+        action-text="播放汉字读音"
+        action-type="success"
+        clickable
+        @click="playCurrentHanzi"
+        @action="playCurrentHanzi"
       />
 
       <div class="actions">

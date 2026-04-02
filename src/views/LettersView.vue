@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import SoundToggle from '@/components/SoundToggle.vue';
 import StudyCard from '@/components/StudyCard.vue';
+import { playUiSound, speakLetter } from '@/composables/useAudio';
 import { letters } from '@/data/letters';
 
 const router = useRouter();
@@ -10,27 +12,48 @@ const currentIndex = ref(0);
 const currentLetter = computed(() => letters[currentIndex.value]);
 const progressPercent = computed(() => Math.round(((currentIndex.value + 1) / letters.length) * 100));
 
-const selectLetter = (index: number) => {
+const playCurrentLetter = () => {
+  speakLetter(currentLetter.value.uppercase);
+};
+
+const updateLetter = (index: number) => {
   currentIndex.value = index;
+  playUiSound('primary');
+  speakLetter(letters[index].uppercase);
+};
+
+const selectLetter = (index: number) => {
+  updateLetter(index);
 };
 
 const goPrev = () => {
-  currentIndex.value = currentIndex.value === 0 ? letters.length - 1 : currentIndex.value - 1;
+  const nextIndex = currentIndex.value === 0 ? letters.length - 1 : currentIndex.value - 1;
+  updateLetter(nextIndex);
 };
 
 const goNext = () => {
-  currentIndex.value = currentIndex.value === letters.length - 1 ? 0 : currentIndex.value + 1;
+  const nextIndex = currentIndex.value === letters.length - 1 ? 0 : currentIndex.value + 1;
+  updateLetter(nextIndex);
+};
+
+const goHome = () => {
+  playUiSound('soft');
+  router.push('/');
 };
 </script>
 
 <template>
   <main class="page">
-    <van-nav-bar title="英文字母学习" left-text="返回" left-arrow @click-left="router.push('/')" />
+    <van-nav-bar title="英文字母学习" left-text="返回" left-arrow @click-left="goHome" />
 
     <section class="page-section">
+      <div class="page-tools">
+        <SoundToggle />
+      </div>
+
       <div class="section-intro">
         <h2>认识 26 个英文字母</h2>
-        <p>点击下方字母按钮，或使用上一页、下一页切换学习内容。</p>
+        <p>点击下方字母按钮，或使用上一页、下一页切换学习内容，并可播放字母发音。</p>
       </div>
 
       <section class="learning-summary learning-summary--letters">
@@ -56,6 +79,11 @@ const goNext = () => {
         :meaning="`单词：${currentLetter.word} · 含义：${currentLetter.meaning}`"
         :tip="currentLetter.tip"
         accent-class="study-card--letters"
+        action-text="播放字母发音"
+        action-type="primary"
+        clickable
+        @click="playCurrentLetter"
+        @action="playCurrentLetter"
       />
 
       <div class="actions">
