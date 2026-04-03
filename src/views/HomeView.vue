@@ -88,6 +88,29 @@ const goToModule = (routeName: string) => {
       </div>
     </section>
 
+    <section class="module-list">
+      <div
+        v-for="item in modules"
+        :key="item.routeName"
+        class="home-card"
+        :class="item.accent"
+        role="button"
+        tabindex="0"
+        @click="goToModule(item.routeName)"
+        @keydown.enter="goToModule(item.routeName)"
+        @keydown.space.prevent="goToModule(item.routeName)"
+      >
+        <div class="home-card__icon">{{ item.emoji }}</div>
+        <div class="home-card__body">
+          <div class="home-card__title">{{ item.title }}</div>
+          <div class="home-card__desc">{{ item.description }}</div>
+        </div>
+        <van-button round type="primary" size="small" @click.stop="goToModule(item.routeName)">
+          开始
+        </van-button>
+      </div>
+    </section>
+
     <section class="stats-grid">
       <div v-for="item in highlights" :key="item.label" class="stat-card">
         <div class="stat-card__value">{{ item.value }}</div>
@@ -112,29 +135,6 @@ const goToModule = (routeName: string) => {
           <div class="install-step__index">{{ index + 1 }}</div>
           <div class="install-step__text">{{ step }}</div>
         </div>
-      </div>
-    </section>
-
-    <section class="module-list">
-      <div
-        v-for="item in modules"
-        :key="item.routeName"
-        class="home-card"
-        :class="item.accent"
-        role="button"
-        tabindex="0"
-        @click="goToModule(item.routeName)"
-        @keydown.enter="goToModule(item.routeName)"
-        @keydown.space.prevent="goToModule(item.routeName)"
-      >
-        <div class="home-card__icon">{{ item.emoji }}</div>
-        <div class="home-card__body">
-          <div class="home-card__title">{{ item.title }}</div>
-          <div class="home-card__desc">{{ item.description }}</div>
-        </div>
-        <van-button round type="primary" size="small" @click.stop="goToModule(item.routeName)">
-          开始学习
-        </van-button>
       </div>
     </section>
 
