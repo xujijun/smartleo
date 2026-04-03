@@ -329,17 +329,9 @@ onBeforeUnmount(() => {
             <div class="test-timer__value">{{ timeLeft }}</div>
           </div>
 
-          <div class="test-interaction">
-            <div class="test-feedback" :class="{
-              'test-feedback--correct': lastAnswerCorrect === true,
-              'test-feedback--wrong': lastAnswerCorrect === false
-            }">
-              {{ statusMessage }}
-            </div>
-            <van-button class="replay-btn" round block type="primary" plain @click="replayPrompt" icon="volume-o">
-              再听一次
-            </van-button>
-          </div>
+          <van-button class="replay-btn" round block type="primary" plain @click="replayPrompt" icon="volume-o">
+            再听一次
+          </van-button>
         </section>
 
         <section class="grid-panel">

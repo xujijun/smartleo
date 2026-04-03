@@ -779,10 +779,6 @@ button {
   .test-letter-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .test-status-row {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Compact Test Dashboard Styles */
@@ -800,14 +796,7 @@ button {
   color: #4d5b78;
 }
 
-.test-interaction {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.test-timer,
-.test-feedback {
+.test-timer {
   padding: 12px;
 }
 
@@ -817,7 +806,8 @@ button {
 }
 
 .replay-btn {
-  height: 42px;
+  height: 100%;
+  font-size: 18px;
   font-weight: 700;
-  border-radius: 18px;
+  border-radius: 20px;
 }
