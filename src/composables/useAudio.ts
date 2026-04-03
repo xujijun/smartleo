@@ -180,11 +180,12 @@ export const speakNumberPrompt = (number: number) => {
 };
 
 export const speakHanziPrompt = (hanzi: string) => {
-  speakText(`请选择汉字 ${hanzi}`, 'zh-CN');
+  // 中间加上逗号和省略号，强制 TTS 发音时产生短暂亦清晰的停顿
+  speakText(`请选择汉字，... ${hanzi}`, 'zh-CN');
 };
 
 export const speakTestResult = (score: number, encouragement: string) => {
-  speakText(`本次测试得分 ${score} 分，${encouragement}`, 'zh-CN');
+  speakText(`本次测试得分 ${score} 分，... ${encouragement}`, 'zh-CN');
 };
 
 /** 答题反馈：播报「正确」或「错误」后执行后续流程（静音或无 TTS 时用短延迟兜底） */

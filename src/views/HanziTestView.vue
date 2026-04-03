@@ -2,7 +2,7 @@
 import { computed, onBeforeUnmount, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import SoundToggle from '@/components/SoundToggle.vue';
-import { hanziList } from '@/data/hanzi';
+import { hanziTestList } from '@/data/hanzi-test';
 import {
   playUiSound,
   speakAnswerFeedback,
@@ -90,14 +90,14 @@ const clearAllTimers = () => {
 
 const generateQuestions = (): TestQuestion[] =>
   Array.from({ length: TOTAL_QUESTIONS }, (_, index) => {
-    const correctHanzi = hanziList[Math.floor(Math.random() * hanziList.length)].character;
+    const correctHanzi = hanziTestList[Math.floor(Math.random() * hanziTestList.length)];
     
-    // For Hanzi test, since we have 12 characters, we can randomly select 9 to show as options
+    // For Hanzi test, we randomly select 9 from the 300 candidates to show as options
     const optionsSet = new Set<string>();
     optionsSet.add(correctHanzi);
     
     while (optionsSet.size < 9) {
-      const randomOption = hanziList[Math.floor(Math.random() * hanziList.length)].character;
+      const randomOption = hanziTestList[Math.floor(Math.random() * hanziTestList.length)];
       optionsSet.add(randomOption);
     }
     
