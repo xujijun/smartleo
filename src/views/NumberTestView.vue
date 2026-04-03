@@ -315,34 +315,12 @@ onBeforeUnmount(() => {
       </template>
 
       <template v-else-if="phase === 'quiz'">
-        <section class="learning-summary learning-summary--number-test">
-          <div class="learning-summary__head">
-            <div>
-              <div class="learning-summary__eyebrow">测试进度</div>
-              <div class="learning-summary__title">
-                第 {{ currentQuestionIndex + 1 }} 题 / 共 {{ TOTAL_QUESTIONS }} 题
-              </div>
-            </div>
-            <van-tag round type="primary">当前分数 {{ score }}</van-tag>
+        <section class="compact-dashboard">
+          <div class="compact-dashboard__header">
+            <span class="compact-dashboard__title">进度: {{ currentQuestionIndex + 1 }} / {{ TOTAL_QUESTIONS }} 题</span>
+            <span class="compact-dashboard__score">得分: {{ score }}</span>
           </div>
-          <van-progress :percentage="progressPercent" stroke-width="10" color="#ffb347" />
-          <div class="learning-summary__meta">
-            <span>每题限时 {{ QUESTION_SECONDS }} 秒</span>
-            <span>答对加 {{ SCORE_PER_QUESTION }} 分</span>
-          </div>
-        </section>
-
-        <section class="test-prompt-card test-prompt-card--number">
-          <div class="test-prompt-card__icon">1?</div>
-          <div class="test-prompt-card__title">请听语音后选择正确的数字</div>
-          <div class="test-prompt-card__desc">
-            系统会在题目开始时朗读一次，并在 10 秒后再朗读一次。
-          </div>
-          <div class="test-prompt-card__actions">
-            <van-button round plain type="primary" size="small" @click="replayPrompt">
-              再听一次
-            </van-button>
-          </div>
+          <van-progress :percentage="progressPercent" stroke-width="6" :show-pivot="false" color="#ffb347" />
         </section>
 
         <section class="test-status-row">
@@ -351,11 +329,16 @@ onBeforeUnmount(() => {
             <div class="test-timer__value">{{ timeLeft }}</div>
           </div>
 
-          <div class="test-feedback" :class="{
-            'test-feedback--correct': lastAnswerCorrect === true,
-            'test-feedback--wrong': lastAnswerCorrect === false
-          }">
-            {{ statusMessage }}
+          <div class="test-interaction">
+            <div class="test-feedback" :class="{
+              'test-feedback--correct': lastAnswerCorrect === true,
+              'test-feedback--wrong': lastAnswerCorrect === false
+            }">
+              {{ statusMessage }}
+            </div>
+            <van-button class="replay-btn" round block type="primary" plain @click="replayPrompt" icon="volume-o">
+              再听一次
+            </van-button>
           </div>
         </section>
 

@@ -784,3 +784,40 @@ button {
     grid-template-columns: 1fr;
   }
 }
+
+/* Compact Test Dashboard Styles */
+.compact-dashboard {
+  margin-bottom: 18px;
+  padding: 0 4px;
+}
+
+.compact-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #4d5b78;
+}
+
+.test-interaction {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.test-timer,
+.test-feedback {
+  padding: 12px;
+}
+
+.test-timer__value {
+  margin-top: 2px;
+  font-size: 36px;
+}
+
+.replay-btn {
+  height: 42px;
+  font-weight: 700;
+  border-radius: 18px;
+}
