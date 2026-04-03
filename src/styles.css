@@ -76,8 +76,22 @@ button {
   font-weight: 600;
 }
 
-.hero__title {
+.hero__title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin: 14px 0 8px;
+}
+
+.hero__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(86, 110, 246, 0.15);
+}
+
+.hero__title {
+  margin: 0;
   font-size: 36px;
   line-height: 1.15;
 }

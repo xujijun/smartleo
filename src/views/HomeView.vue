@@ -6,6 +6,8 @@ import { playUiSound } from '@/composables/useAudio';
 
 const router = useRouter();
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const modules = computed(() => [
   {
     title: '字母测试',
@@ -71,7 +73,10 @@ const goToModule = (routeName: string) => {
       </div>
       <div class="hero__content">
         <div class="hero__main">
-          <h1 class="hero__title">SmartLeo</h1>
+          <div class="hero__title-row">
+            <img :src="`${baseUrl}icons/app-icon.svg`" alt="SmartLeo Logo" class="hero__logo" />
+            <h1 class="hero__title">SmartLeo</h1>
+          </div>
           <p class="hero__desc">
             专为儿童设计的移动端启蒙学习助手。
           </p>
