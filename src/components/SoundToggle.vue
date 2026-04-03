@@ -1,14 +1,15 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { useAudioPreferences } from '@/composables/useAudio';
 
 const { soundEnabled, toggleSound } = useAudioPreferences();
-
-const buttonLabel = computed(() => (soundEnabled.value ? '声音已开' : '声音已关'));
 </script>
 
 <template>
-  <van-button round plain size="small" class="sound-toggle" @click="toggleSound">
-    {{ buttonLabel }}
-  </van-button>
+  <button 
+    class="sound-toggle-btn" 
+    @click="toggleSound"
+    :title="soundEnabled ? '关闭声音' : '开启声音'"
+  >
+    <span class="sound-toggle-btn__icon">{{ soundEnabled ? '🔊' : '🔇' }}</span>
+  </button>
 </template>

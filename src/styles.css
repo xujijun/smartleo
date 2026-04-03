@@ -49,13 +49,6 @@ button {
   padding: 18px 4px 12px;
 }
 
-.hero__top {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-}
-
 .hero__content {
   display: grid;
   gap: 16px;
@@ -64,16 +57,6 @@ button {
 
 .hero__main {
   padding-right: 8px;
-}
-
-.hero__badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(124, 156, 255, 0.14);
-  color: #4f68d8;
-  font-size: 13px;
-  font-weight: 600;
 }
 
 .hero__title-row {
@@ -94,6 +77,10 @@ button {
   margin: 0;
   font-size: 36px;
   line-height: 1.15;
+}
+
+.hero__sound-wrapper {
+  margin-left: auto;
 }
 
 .hero__desc {
@@ -299,8 +286,29 @@ button {
   flex: 1;
 }
 
-.sound-toggle {
-  min-width: 88px;
+.sound-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(124, 156, 255, 0.12);
+  color: #4f68d8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:active {
+  transform: scale(0.92);
+  background: rgba(124, 156, 255, 0.2);
+}
+
+.sound-toggle-btn__icon {
+  font-size: 18px;
+  line-height: 1;
 }
 
 .home-card__title {
