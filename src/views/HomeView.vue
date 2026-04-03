@@ -66,7 +66,7 @@ const goToModule = (routeName: string) => {
         <div class="hero__main">
           <h1 class="hero__title">SmartLeo</h1>
           <p class="hero__desc">
-            一个适合手机使用的儿童学习应用，帮助孩子从英文字母和简单汉字开始轻松启蒙。
+            专为儿童设计的移动端启蒙学习助手。
           </p>
         </div>
       </div>
