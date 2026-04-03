@@ -20,6 +20,13 @@ const modules = computed(() => [
     routeName: 'hanzi',
     emoji: '汉',
     accent: 'home-card--hanzi'
+  },
+  {
+    title: '字母测试',
+    description: '听语音选字母，完成 20 道题并查看分数结果。',
+    routeName: 'letter-test',
+    emoji: '测',
+    accent: 'home-card--test'
   }
 ]);
 
@@ -30,9 +37,9 @@ const installSteps = computed(() => [
 ]);
 
 const highlights = computed(() => [
-  { label: '学习模块', value: '2+' },
+  { label: '学习模块', value: '3+' },
   { label: '字母内容', value: '26' },
-  { label: '汉字内容', value: '12' }
+  { label: '测试题数', value: '20' }
 ]);
 
 const goToModule = (routeName: string) => {
@@ -58,8 +65,8 @@ const goToModule = (routeName: string) => {
             <van-button round type="primary" size="large" @click="goToModule('letters')">
               进入学习
             </van-button>
-            <van-button round plain type="primary" size="large" @click="goToModule('hanzi')">
-              看汉字
+            <van-button round plain type="primary" size="large" @click="goToModule('letter-test')">
+              开始测试
             </van-button>
           </div>
         </div>
@@ -136,8 +143,8 @@ const goToModule = (routeName: string) => {
           <div class="feature-item__text">每次学习一个字母或一个汉字，适合短时间反复记忆。</div>
         </div>
         <div class="feature-item">
-          <div class="feature-item__title">桌面快捷进入</div>
-          <div class="feature-item__text">安装到主屏幕后，更接近原生 App 的使用体验。</div>
+          <div class="feature-item__title">字母测试</div>
+          <div class="feature-item__text">听语音选字母，完成 20 道题并获得语音结果鼓励。</div>
         </div>
       </div>
     </section>

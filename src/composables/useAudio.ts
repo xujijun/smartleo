@@ -132,6 +132,48 @@ export const speakHanzi = (hanzi: string) => {
   speakText(hanzi, 'zh-CN');
 };
 
+export const speakLetterPrompt = (letter: string) => {
+  speakText(`请选择字母 ${letter}`, 'zh-CN');
+};
+
+export const speakTestResult = (score: number, encouragement: string) => {
+  speakText(`本次测试得分 ${score} 分，${encouragement}`, 'zh-CN');
+};
+
+/** 答题反馈：播报「正确」或「错误」后执行后续流程（静音或无 TTS 时用短延迟兜底） */
+export const speakAnswerFeedback = (isCorrect: boolean, onComplete: () => void) => {
+  loadPreference();
+  if (!soundEnabledState.value || typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    window.setTimeout(onComplete, 500);
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(isCorrect ? '正确' : '错误');
+  utterance.lang = 'zh-CN';
+  utterance.rate = 0.95;
+  utterance.pitch = 1.02;
+  utterance.volume = 1;
+
+  const finish = () => {
+    window.setTimeout(onComplete, 350);
+  };
+
+  utterance.onend = finish;
+  utterance.onerror = finish;
+
+  window.speechSynthesis.speak(utterance);
+};
+
+export const stopSpeech = () => {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+};
+
 export const useAudioPreferences = () => {
   loadPreference();
 
@@ -141,8 +183,8 @@ export const useAudioPreferences = () => {
 
     if (soundEnabledState.value) {
       playUiSound('success');
-    } else if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+    } else {
+      stopSpeech();
     }
   };
 

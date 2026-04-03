@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/hanzi',
       name: 'hanzi',
       component: () => import('@/views/HanziView.vue')
+    },
+    {
+      path: '/letter-test',
+      name: 'letter-test',
+      component: () => import('@/views/LetterTestView.vue')
     }
   ],
   scrollBehavior() {
