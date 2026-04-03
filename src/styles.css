@@ -296,6 +296,12 @@ button {
   font-size: 14px;
 }
 
+.start-btn {
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .feature-panel__items {
   display: grid;
   gap: 12px;

@@ -68,23 +68,7 @@ const goToModule = (routeName: string) => {
           <p class="hero__desc">
             一个适合手机使用的儿童学习应用，帮助孩子从英文字母和简单汉字开始轻松启蒙。
           </p>
-          <div class="hero__actions">
-            <van-button round type="primary" size="large" @click="goToModule('letters')">
-              进入学习
-            </van-button>
-            <van-button round plain type="primary" size="large" @click="goToModule('letter-test')">
-              开始测试
-            </van-button>
-          </div>
         </div>
-
-        <section class="hero-card">
-          <div class="hero-card__icon">ABC</div>
-          <div class="hero-card__title">儿童友好学习体验</div>
-          <div class="hero-card__text">
-            大按钮、大字体、少步骤，适合亲子共学和移动端触控操作。
-          </div>
-        </section>
       </div>
     </section>
 
@@ -105,16 +89,9 @@ const goToModule = (routeName: string) => {
           <div class="home-card__title">{{ item.title }}</div>
           <div class="home-card__desc">{{ item.description }}</div>
         </div>
-        <van-button round type="primary" size="small" @click.stop="goToModule(item.routeName)">
+        <van-button class="start-btn" round type="primary" size="normal" @click.stop="goToModule(item.routeName)">
           开始
         </van-button>
-      </div>
-    </section>
-
-    <section class="stats-grid">
-      <div v-for="item in highlights" :key="item.label" class="stat-card">
-        <div class="stat-card__value">{{ item.value }}</div>
-        <div class="stat-card__label">{{ item.label }}</div>
       </div>
     </section>
 
