@@ -1,5 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <rect width="128" height="128" rx="28" fill="#7c9cff" />
-  <circle cx="64" cy="64" r="42" fill="#fffaf1" />
-  <path d="M43 46h16c12 0 20 6 20 16 0 7-4 12-10 14l14 18H68L57 79h-4v15H43V46zm16 24c7 0 11-2 11-8s-4-8-11-8h-6v16h6z" fill="#566ef6" />
+  <defs>
+    <linearGradient id="bgGradSm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c9cff" />
+      <stop offset="100%" stop-color="#4f68d8" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景：蓝色圆角方形 -->
+  <rect width="128" height="128" rx="28" fill="url(#bgGradSm)" />
+  
+  <!-- 主体：大写字母 A -->
+  <text x="64" y="65" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#ffffff" text-anchor="middle">A</text>
+
+  <!-- 主体：橙色小书本 -->
+  <path d="M38 76 Q 51 66 64 76 Q 77 66 90 76 L 90 101 Q 77 91 64 101 Q 51 91 38 101 Z" fill="#ffb347" />
+  <path d="M64 76 L 64 101" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- 书本上的汉字“文” -->
+  <text x="64" y="96" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">文</text>
 </svg>

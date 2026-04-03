@@ -1,20 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#7c9cff" />
-  <circle cx="256" cy="224" r="136" fill="#fffaf1" />
-  <path
-    d="M176 144h74c57 0 95 27 95 75 0 32-18 56-47 67l66 82h-72l-48-67h-25v67h-43V144zm74 110c31 0 49-10 49-35 0-24-18-34-49-34h-31v69h31z"
-    fill="#566ef6"
-  />
-  <rect x="112" y="344" width="288" height="64" rx="32" fill="#52c4a0" />
-  <text
-    x="256"
-    y="387"
-    text-anchor="middle"
-    font-size="36"
-    font-family="Arial, sans-serif"
-    font-weight="700"
-    fill="#ffffff"
-  >
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c9cff" />
+      <stop offset="100%" stop-color="#4f68d8" />
+    </linearGradient>
+  </defs>
+
+  <!-- 背景：蓝色圆角方形 -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+  
+  <!-- 背景：内部浅色辅助圆 -->
+  <circle cx="256" cy="256" r="160" fill="#ffffff" opacity="0.15" />
+
+  <!-- 主体：大写字母 A -->
+  <text x="256" y="240" font-family="Arial, sans-serif" font-size="160" font-weight="900" fill="#ffffff" text-anchor="middle">A</text>
+
+  <!-- 主体：橙色小书本 -->
+  <path d="M150 290 Q 203 250 256 290 Q 309 250 362 290 L 362 390 Q 309 350 256 390 Q 203 350 150 390 Z" fill="#ffb347" />
+  <path d="M256 290 L 256 390" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- 书本上的汉字“文” -->
+  <text x="256" y="365" font-family="sans-serif" font-size="52" font-weight="bold" fill="#ffffff" text-anchor="middle">文</text>
+  
+  <!-- 底部应用名 SmartLeo -->
+  <rect x="112" y="420" width="288" height="64" rx="32" fill="#52c4a0" />
+  <text x="256" y="463" text-anchor="middle" font-size="36" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">
     SmartLeo
   </text>
 </svg>
