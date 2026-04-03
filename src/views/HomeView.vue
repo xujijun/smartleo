@@ -66,15 +66,15 @@ const goToModule = (routeName: string) => {
 
 <template>
   <main class="page page-home">
+    <div class="home-top-right">
+      <SoundToggle />
+    </div>
     <section class="hero">
       <div class="hero__content">
         <div class="hero__main">
           <div class="hero__title-row">
             <img :src="`${baseUrl}icons/app-icon.svg`" alt="SmartLeo Logo" class="hero__logo" />
             <h1 class="hero__title">SmartLeo</h1>
-            <div class="hero__sound-wrapper">
-              <SoundToggle />
-            </div>
           </div>
           <p class="hero__desc">
             专为儿童设计的移动端启蒙学习助手。

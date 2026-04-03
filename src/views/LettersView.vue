@@ -44,12 +44,13 @@ const goHome = () => {
 
 <template>
   <main class="page">
-    <van-nav-bar title="英文字母学习" left-text="返回" left-arrow @click-left="goHome" />
+    <van-nav-bar title="英文字母学习" left-text="返回" left-arrow @click-left="goHome">
+      <template #right>
+        <SoundToggle />
+      </template>
+    </van-nav-bar>
 
     <section class="page-section">
-      <div class="page-tools">
-        <SoundToggle />
-      </div>
 
       <div class="section-intro">
         <h2>认识 26 个英文字母</h2>

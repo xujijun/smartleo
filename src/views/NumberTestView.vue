@@ -289,12 +289,13 @@ onBeforeUnmount(() => {
 
 <template>
   <main class="page">
-    <van-nav-bar title="数字测试" left-text="返回" left-arrow @click-left="goHome" />
+    <van-nav-bar title="数字测试" left-text="返回" left-arrow @click-left="goHome">
+      <template #right>
+        <SoundToggle />
+      </template>
+    </van-nav-bar>
 
     <section class="page-section">
-      <div class="page-tools">
-        <SoundToggle />
-      </div>
 
       <template v-if="phase === 'intro'">
         <section class="test-panel">

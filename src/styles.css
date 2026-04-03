@@ -40,9 +40,17 @@ button {
 }
 
 .page-home {
+  position: relative;
   max-width: 720px;
   margin: 0 auto;
   padding: calc(24px + env(safe-area-inset-top, 0px)) 16px calc(32px + env(safe-area-inset-bottom, 0px));
+}
+
+.home-top-right {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  right: 16px;
+  z-index: 10;
 }
 
 .hero {
@@ -77,10 +85,6 @@ button {
   margin: 0;
   font-size: 36px;
   line-height: 1.15;
-}
-
-.hero__sound-wrapper {
-  margin-left: auto;
 }
 
 .hero__desc {
@@ -355,12 +359,6 @@ button {
   max-width: 720px;
   margin: 0 auto;
   padding: 18px 16px 0;
-}
-
-.page-tools {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 6px;
 }
 
 .section-intro {
