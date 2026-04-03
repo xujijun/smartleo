@@ -136,6 +136,10 @@ export const speakLetterPrompt = (letter: string) => {
   speakText(`请选择字母 ${letter}`, 'zh-CN');
 };
 
+export const speakNumberPrompt = (number: number) => {
+  speakText(`请选择数字 ${number}`, 'zh-CN');
+};
+
 export const speakTestResult = (score: number, encouragement: string) => {
   speakText(`本次测试得分 ${score} 分，${encouragement}`, 'zh-CN');
 };

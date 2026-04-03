@@ -27,6 +27,13 @@ const modules = computed(() => [
     routeName: 'letter-test',
     emoji: '测',
     accent: 'home-card--test'
+  },
+  {
+    title: '数字测试',
+    description: '听语音选数字，完成 20 道题并查看分数结果。',
+    routeName: 'number-test',
+    emoji: '123',
+    accent: 'home-card--number-test'
   }
 ]);
 
@@ -37,7 +44,7 @@ const installSteps = computed(() => [
 ]);
 
 const highlights = computed(() => [
-  { label: '学习模块', value: '3+' },
+  { label: '学习模块', value: '4+' },
   { label: '字母内容', value: '26' },
   { label: '测试题数', value: '20' }
 ]);
@@ -143,8 +150,8 @@ const goToModule = (routeName: string) => {
           <div class="feature-item__text">每次学习一个字母或一个汉字，适合短时间反复记忆。</div>
         </div>
         <div class="feature-item">
-          <div class="feature-item__title">字母测试</div>
-          <div class="feature-item__text">听语音选字母，完成 20 道题并获得语音结果鼓励。</div>
+          <div class="feature-item__title">测试功能</div>
+          <div class="feature-item__text">听语音选字母或数字，完成 20 道题并获得语音结果鼓励。</div>
         </div>
       </div>
     </section>

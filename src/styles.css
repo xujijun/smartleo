@@ -273,6 +273,10 @@ button {
   background: linear-gradient(135deg, #ffb347, #ff7a59);
 }
 
+.home-card--number-test .home-card__icon {
+  background: linear-gradient(135deg, #ff7a59, #e63946);
+}
+
 .home-card__body {
   flex: 1;
 }
@@ -356,6 +360,10 @@ button {
 
 .learning-summary--hanzi {
   border-color: rgba(47, 155, 121, 0.18);
+}
+
+.learning-summary--number-test {
+  border-color: rgba(255, 179, 71, 0.18);
 }
 
 .learning-summary__head {
@@ -514,6 +522,10 @@ button {
   font-weight: 800;
 }
 
+.test-prompt-card--number .test-prompt-card__icon {
+  background: linear-gradient(135deg, #ffb347, #ff7a59);
+}
+
 .test-prompt-card__title {
   margin-top: 14px;
   font-size: 20px;
@@ -581,14 +593,20 @@ button {
   color: #c45133;
 }
 
-.test-letter-grid {
+.test-letter-grid,
+.test-number-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-top: 14px;
 }
 
-.test-letter-button {
+.test-number-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.test-letter-button,
+.test-number-button {
   border: 0;
   border-radius: 18px;
   padding: 16px 10px;
@@ -602,24 +620,29 @@ button {
     color 0.15s ease;
 }
 
-.test-letter-button:active {
+.test-letter-button:active,
+.test-number-button:active {
   transform: scale(0.98);
 }
 
-.test-letter-button:disabled {
+.test-letter-button:disabled,
+.test-number-button:disabled {
   opacity: 1;
 }
 
-.test-letter-button--selected {
+.test-letter-button--selected,
+.test-number-button--selected {
   background: #dee6ff;
 }
 
-.test-letter-button--correct {
+.test-letter-button--correct,
+.test-number-button--correct {
   background: #2f9b79;
   color: #fff;
 }
 
-.test-letter-button--wrong {
+.test-letter-button--wrong,
+.test-number-button--wrong {
   background: #ff7a59;
   color: #fff;
 }

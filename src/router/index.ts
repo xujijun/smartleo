@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/letter-test',
       name: 'letter-test',
       component: () => import('@/views/LetterTestView.vue')
+    },
+    {
+      path: '/number-test',
+      name: 'number-test',
+      component: () => import('@/views/NumberTestView.vue')
     }
   ],
   scrollBehavior() {
