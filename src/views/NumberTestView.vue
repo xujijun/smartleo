@@ -15,14 +15,13 @@ type TestPhase = 'intro' | 'quiz' | 'result';
 interface TestQuestion {
   id: number;
   numberStr: string;
+  options: string[];
 }
 
 const TOTAL_QUESTIONS = 20;
 const QUESTION_SECONDS = 20;
 const SCORE_PER_QUESTION = 5;
 const PROMPT_REPEAT_DELAY_MS = 10000;
-
-const numbersList = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 const router = useRouter();
 
@@ -92,10 +91,21 @@ const clearAllTimers = () => {
 
 const generateQuestions = (): TestQuestion[] =>
   Array.from({ length: TOTAL_QUESTIONS }, (_, index) => {
-    const randomNumber = numbersList[Math.floor(Math.random() * numbersList.length)];
+    const correctNumber = Math.floor(Math.random() * 99) + 1; // 1 to 99
+    
+    const optionsSet = new Set<number>();
+    optionsSet.add(correctNumber);
+    
+    while (optionsSet.size < 9) {
+      optionsSet.add(Math.floor(Math.random() * 99) + 1);
+    }
+    
+    const options = Array.from(optionsSet).map(String).sort(() => Math.random() - 0.5);
+    
     return {
       id: index,
-      numberStr: randomNumber
+      numberStr: String(correctNumber),
+      options
     };
   });
 
@@ -353,7 +363,7 @@ onBeforeUnmount(() => {
           <div class="grid-panel__title">请选择正确数字</div>
           <div class="test-number-grid">
             <button
-              v-for="numStr in numbersList"
+              v-for="numStr in activeQuestion?.options"
               :key="numStr"
               type="button"
               class="test-number-button"
