@@ -277,6 +277,10 @@ button {
   background: linear-gradient(135deg, #ff7a59, #e63946);
 }
 
+.home-card--hanzi-test .home-card__icon {
+  background: linear-gradient(135deg, #38c89b, #19a475);
+}
+
 .home-card__body {
   flex: 1;
 }
@@ -370,6 +374,10 @@ button {
 
 .learning-summary--number-test {
   border-color: rgba(255, 179, 71, 0.18);
+}
+
+.learning-summary--hanzi-test {
+  border-color: rgba(56, 200, 155, 0.18);
 }
 
 .learning-summary__head {

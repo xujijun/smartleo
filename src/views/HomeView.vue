@@ -22,6 +22,13 @@ const modules = computed(() => [
     accent: 'home-card--number-test'
   },
   {
+    title: '汉字测试',
+    description: '听音选汉字，完成 20 题。',
+    routeName: 'hanzi-test',
+    emoji: '汉字',
+    accent: 'home-card--hanzi-test'
+  },
+  {
     title: '英文字母学习',
     description: '从 A 到 Z，认识字母。',
     routeName: 'letters',
