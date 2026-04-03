@@ -8,32 +8,32 @@ const router = useRouter();
 
 const modules = computed(() => [
   {
-    title: '英文字母学习',
-    description: '从 A 到 Z，认识大小写字母和简单单词。',
-    routeName: 'letters',
-    emoji: 'Aa',
-    accent: 'home-card--letters'
-  },
-  {
-    title: '简单汉字学习',
-    description: '学习常见基础汉字，认识字形和含义。',
-    routeName: 'hanzi',
-    emoji: '汉',
-    accent: 'home-card--hanzi'
-  },
-  {
     title: '字母测试',
-    description: '听语音选字母，完成 20 道题并查看分数结果。',
+    description: '听音选字母，完成 20 题。',
     routeName: 'letter-test',
     emoji: '测',
     accent: 'home-card--test'
   },
   {
     title: '数字测试',
-    description: '听语音选数字，完成 20 道题并查看分数结果。',
+    description: '听音选数字，完成 20 题。',
     routeName: 'number-test',
     emoji: '123',
     accent: 'home-card--number-test'
+  },
+  {
+    title: '英文字母学习',
+    description: '从 A 到 Z，认识字母。',
+    routeName: 'letters',
+    emoji: 'Aa',
+    accent: 'home-card--letters'
+  },
+  {
+    title: '简单汉字学习',
+    description: '学习基础汉字和含义。',
+    routeName: 'hanzi',
+    emoji: '汉',
+    accent: 'home-card--hanzi'
   }
 ]);
 
