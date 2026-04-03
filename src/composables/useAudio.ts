@@ -102,6 +102,38 @@ export const playUiSound = (preset: SoundPreset = 'primary') => {
   oscillator.stop(startTime + config.duration);
 };
 
+const getBestVoice = (lang: string): SpeechSynthesisVoice | null => {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    return null;
+  }
+
+  const voices = window.speechSynthesis.getVoices();
+  if (!voices.length) {
+    return null;
+  }
+
+  const isZh = lang.startsWith('zh');
+  const targetVoices = voices.filter((v) => v.lang.startsWith(isZh ? 'zh' : 'en'));
+
+  if (isZh) {
+    // 偏好更活泼/儿童/女性的中文语音
+    const preferredNames = ['Xiaoxiao', 'Yaoyao', 'Ting-Ting', 'Meijia', 'Huihui', 'Google 普通话', 'Tingting'];
+    for (const name of preferredNames) {
+      const match = targetVoices.find((v) => v.name.includes(name));
+      if (match) return match;
+    }
+  } else {
+    // 偏好更清晰/活泼的英文语音
+    const preferredNames = ['Samantha', 'Karen', 'Moira', 'Tessa', 'Google US English', 'Microsoft Zira'];
+    for (const name of preferredNames) {
+      const match = targetVoices.find((v) => v.name.includes(name));
+      if (match) return match;
+    }
+  }
+
+  return targetVoices[0] || null;
+};
+
 export const speakText = (text: string, lang: string) => {
   loadPreference();
   if (!soundEnabledState.value || typeof window === 'undefined' || !('speechSynthesis' in window)) {
@@ -117,8 +149,15 @@ export const speakText = (text: string, lang: string) => {
 
   const utterance = new SpeechSynthesisUtterance(normalizedText);
   utterance.lang = lang;
-  utterance.rate = lang.startsWith('zh') ? 0.9 : 0.88;
-  utterance.pitch = 1.02;
+  
+  const voice = getBestVoice(lang);
+  if (voice) {
+    utterance.voice = voice;
+  }
+
+  // 稍微调高音调让声音更“童声”、活泼，语速稍放慢以适合儿童听清
+  utterance.rate = lang.startsWith('zh') ? 0.85 : 0.8;
+  utterance.pitch = 1.4;
   utterance.volume = 1;
 
   window.speechSynthesis.speak(utterance);
@@ -156,8 +195,14 @@ export const speakAnswerFeedback = (isCorrect: boolean, onComplete: () => void) 
 
   const utterance = new SpeechSynthesisUtterance(isCorrect ? '正确' : '错误');
   utterance.lang = 'zh-CN';
-  utterance.rate = 0.95;
-  utterance.pitch = 1.02;
+  
+  const voice = getBestVoice('zh-CN');
+  if (voice) {
+    utterance.voice = voice;
+  }
+  
+  utterance.rate = 0.9;
+  utterance.pitch = 1.4;
   utterance.volume = 1;
 
   const finish = () => {
