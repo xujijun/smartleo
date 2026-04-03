@@ -28,20 +28,35 @@
     <!-- Lion Face (Shield/Hexagon) -->
     <path d="M 170 160 L 342 160 Q 360 330 256 390 Q 152 330 170 160 Z" fill="#ffffff" />
     
-    <!-- Smart Glasses -->
-    <rect x="155" y="190" width="85" height="60" rx="18" fill="none" stroke="#4f68d8" stroke-width="16" />
-    <rect x="272" y="190" width="85" height="60" rx="18" fill="none" stroke="#4f68d8" stroke-width="16" />
-    <path d="M 240 220 L 272 220" stroke="#4f68d8" stroke-width="14" stroke-linecap="round" />
+    <!-- Squinting Happy Eyes (眯眯眼) -->
+    <path d="M 180 230 Q 197 210 214 230" fill="none" stroke="#4f68d8" stroke-width="14" stroke-linecap="round" />
+    <path d="M 298 230 Q 315 210 332 230" fill="none" stroke="#4f68d8" stroke-width="14" stroke-linecap="round" />
     
-    <!-- Eyes (focused/smart) -->
-    <circle cx="197" cy="220" r="14" fill="#4f68d8" />
-    <circle cx="314" cy="220" r="14" fill="#4f68d8" />
+    <!-- Cute Blush (小腮红，更显可爱) -->
+    <ellipse cx="170" cy="245" rx="14" ry="8" fill="#ff7a59" opacity="0.3" />
+    <ellipse cx="342" cy="245" rx="14" ry="8" fill="#ff7a59" opacity="0.3" />
     
     <!-- Cute Lion Nose -->
-    <polygon points="236,280 276,280 256,310" fill="#4f68d8" />
+    <polygon points="236,275 276,275 256,305" fill="#4f68d8" />
     
     <!-- Cute Lion Mouth -->
-    <path d="M 256 310 Q 256 340 226 335" fill="none" stroke="#4f68d8" stroke-width="10" stroke-linecap="round" />
-    <path d="M 256 310 Q 256 340 286 335" fill="none" stroke="#4f68d8" stroke-width="10" stroke-linecap="round" />
+    <path d="M 256 305 Q 256 335 226 330" fill="none" stroke="#4f68d8" stroke-width="10" stroke-linecap="round" />
+    <path d="M 256 305 Q 256 335 286 330" fill="none" stroke="#4f68d8" stroke-width="10" stroke-linecap="round" />
+
+    <!-- Big Graduation Hat / Mortarboard -->
+    <!-- Hat Skullcap Base -->
+    <path d="M 160 100 Q 256 165 352 100 Q 256 130 160 100 Z" fill="#30417a" />
+    
+    <!-- Hat Top Board (Diamond) -->
+    <polygon points="256,25 396,85 256,145 116,85" fill="#24304d" />
+    
+    <!-- Tassel hanging down -->
+    <path d="M 256 85 Q 360 110 375 190" fill="none" stroke="#ffda6a" stroke-width="8" stroke-linecap="round" />
+    
+    <!-- Tassel fringing -->
+    <path d="M 369 190 L 364 220 M 375 190 L 375 225 M 381 190 L 386 220" stroke="#ffda6a" stroke-width="5" stroke-linecap="round" />
+    
+    <!-- Hat Top Button -->
+    <circle cx="256" cy="85" r="10" fill="#ffda6a" />
   </g>
 </svg>
